@@ -49,6 +49,11 @@ public class IndexModel : PageModel
     public DateTime DateOfBirth { get; set; } = default!;
 
     [BindProperty]
+    [Display(Name = "Stuff")]
+    [UIHint("CustomEditor")]
+    public string CustomEditor { get; set; } = default!;
+
+    [BindProperty]
     [Display(Name = "Yes/No")]
     [BootstrapColumnWidth(3)]
     public bool Checkboxes { get; set; } = default!;

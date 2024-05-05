@@ -9,7 +9,7 @@ internal class InputText : IBootstrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer) => true;
 
-    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var inputType = modelExplorer.Metadata.DataTypeName ?? "text";
 

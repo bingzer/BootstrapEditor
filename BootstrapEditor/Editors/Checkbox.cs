@@ -14,7 +14,7 @@ internal class Checkbox : IBootstrapEditor
         return modelType == typeof(bool) || modelType == typeof(bool?);
     }
 
-    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var builder = new HtmlContentBuilder();
 

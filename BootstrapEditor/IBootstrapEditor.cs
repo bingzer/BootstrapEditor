@@ -19,5 +19,5 @@ public interface IBootstrapEditor
     /// <param name="htmlHelper"></param>
     /// <param name="modelExplorer"></param>
     /// <returns></returns>
-    IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer);
+    IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer);
 }

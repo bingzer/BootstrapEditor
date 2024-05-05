@@ -36,7 +36,7 @@ internal class InputNumber : IBootstrapEditor
         return IsTypeNumeric(modelType);
     }
 
-    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var isDecimal = IsTypeDecimal(modelExplorer.ModelType);
 

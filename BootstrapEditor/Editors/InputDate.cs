@@ -29,7 +29,7 @@ internal class InputDate : IBootstrapEditor
         return false;
     }
 
-    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         string? value = modelExplorer.Model switch
         {

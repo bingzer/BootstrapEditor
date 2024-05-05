@@ -2,7 +2,7 @@
 
 namespace BootstrapEditor;
 
-public interface IEditorHtmlContent : IHtmlContent
+public interface IBootstrapHtmlContent : IHtmlContent
 {
     bool IsFormGroupRequired { get; }
 

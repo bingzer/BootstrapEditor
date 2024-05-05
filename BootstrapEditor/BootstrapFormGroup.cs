@@ -9,17 +9,6 @@ namespace BootstrapEditor;
 
 internal static class BootstrapFormGroup
 {
-    private static readonly IEnumerable<IBootstrapEditor> editors = new List<IBootstrapEditor>
-    {
-        new InputDate(),
-        new InputDateTime(),
-        new InputHidden(),
-        new InputNumber(),
-        new Select(),
-        new TextArea(),
-        new Checkbox(),
-        new InputText()
-    };
 
     public static IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer? modelExplorer)
     {
@@ -28,9 +17,14 @@ internal static class BootstrapFormGroup
             return HtmlString.Empty;
         }
 
-        var editor = editors.First(e => e.AcceptModel(modelExplorer));
+        var editor = BootstrapEditorRegistrations.Editors.First(e => e.AcceptModel(modelExplorer));
 
-        var editorHtmlContent = editor.GenerateHtmlContent(htmlHelper, modelExplorer);
+        var htmlContent = editor.GenerateHtmlContent(htmlHelper, modelExplorer);
+        if (htmlContent is not IBootstrapHtmlContent editorHtmlContent)
+        {
+            return htmlContent;
+        }
+
         var isLabelRequired = editorHtmlContent.IsLabelRequired;
         var columnWidth = GetColumnWidth(modelExplorer);
 

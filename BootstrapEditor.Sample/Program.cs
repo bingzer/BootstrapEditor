@@ -1,4 +1,10 @@
+using BootstrapEditor;
+using BootstrapEditor.Sample.Pages;
+
 var builder = WebApplication.CreateBuilder(args);
+
+BootstrapEditorRegistrations.RegistorEditor(new CustomEditor());
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

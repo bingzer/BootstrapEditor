@@ -1,5 +1,5 @@
-﻿using BootstrapEditor;
-using BootstrapEditor.Attributes;
+﻿using BootstrapEditor.Attributes;
+using BootstrapEditor.Extensions;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,12 +11,12 @@ internal class TextArea : IBootstrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer)
     {
-        var templateHint = modelExplorer.Metadata.TemplateHint;
+        var templateHint = modelExplorer.GetTemplateHint();
 
         return templateHint?.Equals("textarea", StringComparison.InvariantCultureIgnoreCase) == true;
     }
 
-    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var (rows, cols) = FindRowAndColumn(modelExplorer);
 
@@ -38,6 +38,7 @@ internal class TextArea : IBootstrapEditor
             ?.PropertyAttributes
             ?.OfType<TextAreaAttribute>()
             ?.FirstOrDefault();
+
         if (textarea is null)
         {
             return (null, null);
