@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace BootstrapEditor.Editors;
 
-internal class Checkbox : IBoostrapEditor
+internal class Checkbox : IBootstrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer)
     {
@@ -14,7 +14,7 @@ internal class Checkbox : IBoostrapEditor
         return modelType == typeof(bool) || modelType == typeof(bool?);
     }
 
-    public BootstrapEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var builder = new HtmlContentBuilder();
 

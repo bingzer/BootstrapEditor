@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace BootstrapEditor.Editors;
 
-public class InputNumber : IBoostrapEditor
+internal class InputNumber : IBootstrapEditor
 {
 
     private static readonly IReadOnlySet<Type> WholeNumbers = new HashSet<Type>
@@ -36,7 +36,7 @@ public class InputNumber : IBoostrapEditor
         return IsTypeNumeric(modelType);
     }
 
-    public BootstrapEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var isDecimal = IsTypeDecimal(modelExplorer.ModelType);
 

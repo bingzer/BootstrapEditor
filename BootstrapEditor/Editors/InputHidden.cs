@@ -1,10 +1,11 @@
 ﻿using BootstrapEditor;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace BootstrapEditor.Editors;
 
-internal class InputHidden : IBoostrapEditor
+internal class InputHidden : IBootstrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer)
     {
@@ -15,7 +16,7 @@ internal class InputHidden : IBoostrapEditor
         return dataTypeName == "hidden" || uiHint == "hiddeninput";
     }
 
-    public BootstrapEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var editor = htmlHelper.TextBox(modelExplorer.Metadata.PropertyName,
             modelExplorer.Model,

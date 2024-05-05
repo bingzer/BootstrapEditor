@@ -2,22 +2,22 @@
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
-using BootstrapEditor.Annotations;
+using BootstrapEditor.Attributes;
 using BootstrapEditor.Editors;
 
 namespace BootstrapEditor;
 
 internal static class BootstrapFormGroup
 {
-    private static readonly IEnumerable<IBoostrapEditor> editors = new List<IBoostrapEditor>
+    private static readonly IEnumerable<IBootstrapEditor> editors = new List<IBootstrapEditor>
     {
-        new Checkbox(),
         new InputDate(),
         new InputDateTime(),
         new InputHidden(),
         new InputNumber(),
         new Select(),
         new TextArea(),
+        new Checkbox(),
         new InputText()
     };
 

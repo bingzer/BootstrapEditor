@@ -1,14 +1,15 @@
 ﻿using BootstrapEditor;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace BootstrapEditor.Editors;
 
-public class InputText : IBoostrapEditor
+internal class InputText : IBootstrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer) => true;
 
-    public BootstrapEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var inputType = modelExplorer.Metadata.DataTypeName ?? "text";
 

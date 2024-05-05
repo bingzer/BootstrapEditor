@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace BootstrapEditor.Editors;
 
-internal class InputDateTime : IBoostrapEditor
+internal class InputDateTime : IBootstrapEditor
 {
     private static readonly IReadOnlySet<Type> DateTypes = new HashSet<Type> {
         typeof(DateTime),
@@ -28,7 +28,7 @@ internal class InputDateTime : IBoostrapEditor
         return false;
     }
 
-    public BootstrapEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         string? value = modelExplorer.Model switch
         {

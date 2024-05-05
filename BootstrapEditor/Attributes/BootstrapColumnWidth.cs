@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BootstrapEditor.Annotations;
+namespace BootstrapEditor.Attributes;
 
 /// <summary>
 /// Bootstrap's Layout/Grid system

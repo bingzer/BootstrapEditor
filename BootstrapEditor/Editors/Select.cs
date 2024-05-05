@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
+﻿using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.ComponentModel.DataAnnotations;
 
 namespace BootstrapEditor.Editors;
 
-internal class Select : IBoostrapEditor
+internal class Select : IBootstrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer)
     {
@@ -35,7 +36,7 @@ internal class Select : IBoostrapEditor
         return false;
     }
 
-    public BootstrapEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
+    public IEditorHtmlContent GenerateHtmlContent(IHtmlHelper htmlHelper, ModelExplorer modelExplorer)
     {
         var selectList = CreateSelectList(modelExplorer);
 

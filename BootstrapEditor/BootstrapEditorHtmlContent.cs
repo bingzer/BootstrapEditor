@@ -3,7 +3,7 @@ using System.Text.Encodings.Web;
 
 namespace BootstrapEditor;
 
-public class BootstrapEditorHtmlContent : IHtmlContent
+internal class BootstrapEditorHtmlContent : IEditorHtmlContent
 {
     private readonly IHtmlContent _html;
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BootstrapEditor.Annotations;
+namespace BootstrapEditor.Attributes;
 
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
 public class TextAreaAttribute : UIHintAttribute
