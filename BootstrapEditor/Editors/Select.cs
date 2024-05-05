@@ -1,8 +1,7 @@
-﻿using BootstrapEditor;
-using BootstrapEditor.Extensions;
-using Microsoft.AspNetCore.Html;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.ComponentModel.DataAnnotations;
 
 namespace BootstrapEditor.Editors;
 
@@ -10,7 +9,7 @@ internal class Select : IBoostrapEditor
 {
     public bool AcceptModel(ModelExplorer modelExplorer)
     {
-        var templateHint = modelExplorer.GetTemplateHint();
+        var templateHint = GetTemplateHint(modelExplorer);
         if (templateHint is null)
         {
             return false;
@@ -50,7 +49,7 @@ internal class Select : IBoostrapEditor
 
     private static IEnumerable<SelectListItem> CreateSelectList(ModelExplorer modelExplorer)
     {
-        var templateHint = modelExplorer.GetTemplateHint();
+        var templateHint = GetTemplateHint(modelExplorer);
         var templateModelExplorer = modelExplorer.Container.GetExplorerForProperty(templateHint);
         var templateModel = templateModelExplorer.Model;
 
@@ -78,5 +77,33 @@ internal class Select : IBoostrapEditor
         }
 
         return Array.Empty<SelectListItem>();
+    }
+
+    /// <summary>
+    /// Returns TemplateHint if available otherwise look for UIHint property and get it from there
+    /// </summary>
+    /// <param name="modelExplorer"></param>
+    /// <returns></returns>
+    private static string? GetTemplateHint(ModelExplorer modelExplorer)
+    {
+        var templateHint = modelExplorer.Metadata.TemplateHint;
+        if (templateHint is not null)
+        {
+            return templateHint;
+        }
+
+        if (modelExplorer.Metadata is DefaultModelMetadata dm)
+        {
+            var uiHint = dm.Attributes
+                .PropertyAttributes
+                .OfType<UIHintAttribute>()
+                .Where(att => att.UIHint != null)
+                .FirstOrDefault();
+
+            return uiHint?.UIHint;
+
+        }
+
+        return null;
     }
 }
